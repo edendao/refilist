@@ -1,3 +1,5 @@
+import { ChakraProvider } from "@chakra-ui/react"
+import { Layout } from "app/layout/Layout"
 import {
   AppProps,
   ErrorBoundary,
@@ -6,19 +8,21 @@ import {
   useQueryErrorResetBoundary,
 } from "blitz"
 
-export default function App({ Component, pageProps }: AppProps) {
-  const getLayout = Component.getLayout || ((page) => page)
-
-  return (
-    <ErrorBoundary
-      FallbackComponent={RootErrorFallback}
-      onReset={useQueryErrorResetBoundary().reset}
-    >
-      {getLayout(<Component {...pageProps} />)}
-    </ErrorBoundary>
-  )
-}
-
 function RootErrorFallback({ error }: ErrorFallbackProps) {
   return <ErrorComponent statusCode={error.statusCode || 400} title={error.message || error.name} />
+}
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <ChakraProvider>
+      <ErrorBoundary
+        FallbackComponent={RootErrorFallback}
+        onReset={useQueryErrorResetBoundary().reset}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ErrorBoundary>
+    </ChakraProvider>
+  )
 }

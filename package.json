@@ -20,9 +20,18 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "2.0.4",
+    "@chakra-ui/react": "1.x",
+    "@emotion/react": "11.x",
+    "@emotion/styled": "11.x",
     "blitz": "0.45.5",
+    "framer-motion": "5.x",
+    "graphql": "16.5.0",
+    "graphql-request": "4.3.0",
+    "lodash": "4.17.21",
+    "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react": "18.0.0"
+    "react-icons": "4.4.0"
   },
   "devDependencies": {
     "@types/react": "18.0.1",
