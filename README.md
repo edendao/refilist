@@ -1,8 +1,4 @@
-[![Blitz.js](https://raw.githubusercontent.com/blitz-js/art/master/github-cover-photo.png)](https://blitzjs.com)
-
-This is a minimal [Blitz.js](https://github.com/blitz-js/blitz) app.
-
-# **refilist**
+# **ReFi List**
 
 ## Getting Started
 
@@ -13,16 +9,6 @@ blitz dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Tests
-
-Runs your tests using Jest.
-
-```
-yarn test
-```
-
-Blitz comes with a test setup using [Jest](https://jestjs.io/) and [react-testing-library](https://testing-library.com/).
 
 ## Commands
 
@@ -89,8 +75,6 @@ These files are:
 - `.babel.config.js`, `.eslintrc.js`, `.env`, etc. ("dotfiles") are configuration files for various bits of JavaScript tooling.
 
 - `blitz.config.ts` is for advanced custom configuration of Blitz. [Here you can learn how to use it](https://blitzjs.com/docs/blitz-config).
-
-- `jest.config.js` contains config for Jest tests. You can [customize it if needed](https://jestjs.io/docs/en/configuration).
 
 You can read more about it in the [File Structure](https://blitzjs.com/docs/file-structure) section of the documentation.
 
