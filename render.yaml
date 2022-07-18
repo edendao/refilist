@@ -7,7 +7,7 @@ services:
     name: refilist
     env: node
     plan: free
-    buildCommand: yarn --frozen-lockfile --prod=false && blitz build && blitz prisma migrate deploy
+    buildCommand: yarn --frozen-lockfile --prod=false && blitz build
     startCommand: blitz start
     envVars:
       - key: NODE_ENV
