@@ -35,6 +35,7 @@ export const getAllProjects = async () => {
     endpoint,
     ALL_PROJECTS
   )
+
   return cryptoImpactMap
 }
 

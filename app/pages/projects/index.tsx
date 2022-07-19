@@ -112,7 +112,15 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
         {filters.length !== 0 && (
           <Wrap>
             {filters.map(([key, value]) => (
-              <Tag key={key} variant="solid" colorScheme="orange" py={1} px={3} size="md">
+              <Tag
+                key={key}
+                variant="solid"
+                colorScheme="orange"
+                fontWeight="bold"
+                py={1}
+                px={3}
+                size="md"
+              >
                 <TagLabel>{value}</TagLabel>
                 <TagCloseButton onClick={() => removeFilter(key)} />
               </Tag>
