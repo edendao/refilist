@@ -1,4 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react"
+import theme from "app/core/theme"
 import { Layout } from "app/layout/Layout"
 import {
   AppProps,
@@ -13,12 +14,11 @@ function RootErrorFallback({ error }: ErrorFallbackProps) {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
+  const { reset } = useQueryErrorResetBoundary()
+
   return (
-    <ChakraProvider>
-      <ErrorBoundary
-        FallbackComponent={RootErrorFallback}
-        onReset={useQueryErrorResetBoundary().reset}
-      >
+    <ChakraProvider theme={theme}>
+      <ErrorBoundary FallbackComponent={RootErrorFallback} onReset={reset}>
         <Layout>
           <Component {...pageProps} />
         </Layout>

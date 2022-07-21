@@ -8,8 +8,7 @@ import { NavButton } from "./NavButton"
 
 export const Sidebar: React.FC<FlexProps> = (props) => (
   <Flex
-    flex="1"
-    overflowY="auto"
+    flex={1}
     minW={240}
     maxW={{ base: "full", sm: "xs" }}
     py={{ base: "6", sm: "8" }}

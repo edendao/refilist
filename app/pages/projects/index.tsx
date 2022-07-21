@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   HStack,
   Heading,
@@ -89,8 +90,9 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
     [allProjects, predicate, filters.length]
   )
 
+  const bg = useColorModeValue("gray.100", "gray.900")
   return (
-    <>
+    <VStack overflowY="scroll" maxH="100vh">
       <Stack
         direction={{ base: "column", md: "row" }}
         justify="space-between"
@@ -99,9 +101,8 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
         position="sticky"
         top={0}
         p={8}
-        zIndex={42}
-        bg={useColorModeValue("gray.100", "gray.800")}
-        borderBottomWidth={2}
+        zIndex={2}
+        bg={bg}
       >
         <Heading size="md" fontSize="2xl">
           {projects.length === allProjects.length
@@ -144,22 +145,15 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
           />
         </InputGroup>
       </Stack>
-      <SimpleGrid
-        mt="6"
-        p="6"
-        columns={[1, null, 2, null, 3, 4]}
-        spacing="6"
-        minH="480px"
-        h={["80vh", null, "90vh"]}
-      >
+      <Box mt="6" p="6" columnGap={8} sx={{ columnWidth: 360 }} bg={bg}>
         {projects.map((p) => (
-          <Card key={p.id} overflow="scroll">
+          <Card key={p.id} display="inline-block" w="100%" mb={8}>
             <Stack direction={["column", null, "row"]}>
               <VStack align="start" spacing={3}>
                 <Heading as="h3" size="md">
                   {p.name}
                 </Heading>
-                <Text fontSize="sm">{p.about && preview(p.about, 120)}</Text>
+                {p.about && <Text fontSize="sm">{preview(p.about, 240)}</Text>}
                 <Wrap>
                   {p.chain?.map((c) => (
                     <Button variant="solid" key={c} size="xs" onClick={() => filterBy("chain", c)}>
@@ -194,7 +188,7 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
                       isExternal
                       target="_blank"
                       variant="solid"
-                      colorScheme="blue"
+                      colorScheme="yellow"
                       href={p.url}
                       size="sm"
                     >
@@ -232,8 +226,8 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
             </Stack>
           </Card>
         ))}
-      </SimpleGrid>
-    </>
+      </Box>
+    </VStack>
   )
 }
 
