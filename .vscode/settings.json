@@ -12,7 +12,9 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "node_modules/": true,
-    ".blitz.config.compiled.js": true
+    ".blitz.config.compiled.js": true,
+    ".next": true,
+    ".blitz": true
   },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"

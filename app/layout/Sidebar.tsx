@@ -1,8 +1,7 @@
 import { Divider, Flex, FlexProps, Stack } from "@chakra-ui/react"
 import { Routes } from "blitz"
 import * as React from "react"
-import { FiHelpCircle, FiHome } from "react-icons/fi"
-import { GiMeshBall } from "react-icons/gi"
+import { FiHelpCircle, FiHome, FiRss, FiSunrise } from "react-icons/fi"
 
 import { NavButton } from "./NavButton"
 
@@ -18,7 +17,8 @@ export const Sidebar: React.FC<FlexProps> = (props) => (
     <Stack justify="space-between" spacing="1" flex={1}>
       <Stack spacing={[3, 4, 5, 6]}>
         <NavButton label="Home" to={Routes.Home()} icon={FiHome} />
-        <NavButton label="Projects" to={Routes.Projects()} icon={GiMeshBall} />
+        <NavButton label="Projects" to={Routes.Projects()} icon={FiRss} />
+        <NavButton label="Submit" to={Routes.NewProject()} icon={FiSunrise} />
       </Stack>
       <Stack spacing={[3, 4, 5, 6]}>
         <Divider />

@@ -8,7 +8,6 @@ import {
   InputGroup,
   InputLeftElement,
   Link,
-  SimpleGrid,
   Stack,
   Tag,
   TagCloseButton,
@@ -71,6 +70,7 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
       FILTER_FIELDS.flatMap((f) => (typeof query[f] === "string" ? [[f, query[f] as string]] : [])),
     [query]
   )
+
   const predicate = useCallback(
     (project: ImpactProject) =>
       filters.every(([key, value]) => {
@@ -85,14 +85,16 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
       }),
     [filters]
   )
+
   const projects = useMemo(
     () => (filters.length === 0 ? allProjects : allProjects.filter(predicate)),
     [allProjects, predicate, filters.length]
   )
 
   const bg = useColorModeValue("gray.100", "gray.900")
+
   return (
-    <VStack overflowY="scroll" maxH="100vh">
+    <VStack overflowY="scroll" maxH="100vh" bg={bg}>
       <Stack
         direction={{ base: "column", md: "row" }}
         justify="space-between"
@@ -153,7 +155,7 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
                 <Heading as="h3" size="md">
                   {p.name}
                 </Heading>
-                {p.about && <Text fontSize="sm">{preview(p.about, 240)}</Text>}
+                {p.about && <Text fontSize="sm">{clipText(p.about, 240)}</Text>}
                 <Wrap>
                   {p.chain?.map((c) => (
                     <Button variant="solid" key={c} size="xs" onClick={() => filterBy("chain", c)}>
@@ -167,7 +169,7 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
                       size="xs"
                       onClick={() => filterBy("microSector", s)}
                     >
-                      {preview(s, 32)}
+                      {clipText(s, 32)}
                     </Button>
                   ))}
                   {p.macroSector?.map((s) => (
@@ -177,7 +179,7 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
                       size="xs"
                       onClick={() => filterBy("macroSector", s)}
                     >
-                      {preview(s, 32)}
+                      {clipText(s, 32)}
                     </Button>
                   ))}
                 </Wrap>
@@ -231,7 +233,7 @@ const Projects: BlitzPage<ProjectsProps> = ({ allProjects = [] }) => {
   )
 }
 
-const preview = (s: string, n: number) => {
+const clipText = (s: string, n: number) => {
   if (s.length < n) return s
 
   const lastSpace = s.lastIndexOf(" ", n)
